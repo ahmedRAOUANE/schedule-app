@@ -3,26 +3,17 @@
 import { useEffect, useState } from "react";
 
 const ToggleThemeBtn = ({ className }: { className?: string}) => {
-    const [theme, setTheme] = useState("light");
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches; // Check if the system is using light mode
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || isLightMode ? "light" : "dark");
 
     useEffect(() => {
-        const currentTheme = localStorage.getItem("theme") || theme;
-        if (currentTheme) {
-            setTheme(currentTheme);
-            document.documentElement.setAttribute("data-theme", currentTheme);
-        }
-    }, []);
-
-    const handleChangeTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-        document.documentElement.setAttribute("data-theme", newTheme);
-    }
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
 
     return (
         <button
-            onClick={handleChangeTheme}
+            onClick={() => setTheme(prev => ({"light": "dark", "dark": "light"}[prev]))}
             className={`btn btn-secondary btn-sm ${className}`}
         >
             {theme === "light" ? "🌜" : "🌞"}
