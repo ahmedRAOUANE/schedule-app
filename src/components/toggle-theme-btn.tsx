@@ -3,15 +3,17 @@
 import { useEffect, useState } from "react";
 
 const ToggleThemeBtn = ({ className }: { className?: string}) => {
-    const [theme, setTheme] = useState("light");
+    const storedTheme = localStorage.getItem("theme");
+    const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const [theme, setTheme] = useState(storedTheme || isLightMode ? "light" : "dark");
 
     useEffect(() => {
-        const currentTheme = localStorage.getItem("theme");
+        const currentTheme = storedTheme;
         if (currentTheme) {
             setTheme(currentTheme);
             document.documentElement.setAttribute("data-theme", currentTheme);
         }
-    }, []);
+    }, [theme, storedTheme]);
 
     const handleChangeTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
@@ -31,3 +33,4 @@ const ToggleThemeBtn = ({ className }: { className?: string}) => {
 }
 
 export default ToggleThemeBtn
+
