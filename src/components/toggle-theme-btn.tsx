@@ -6,7 +6,7 @@ const ToggleThemeBtn = ({ className }: { className?: string}) => {
     const [theme, setTheme] = useState("light");
 
     useEffect(() => {
-        const currentTheme = localStorage.getItem("theme");
+        const currentTheme = localStorage.getItem("theme") || theme;
         if (currentTheme) {
             setTheme(currentTheme);
             document.documentElement.setAttribute("data-theme", currentTheme);
