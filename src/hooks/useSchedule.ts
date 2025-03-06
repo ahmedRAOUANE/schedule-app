@@ -9,6 +9,7 @@ type Days = Record<number, Day>;
 export const useSckedule = () => {
     const [schedule, setSchedule] = useState<Days>({});
     const [currentDay, setCurrentDay] = useState<number>(1);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     // update the current day
     const getToday = () => {
@@ -31,6 +32,7 @@ export const useSckedule = () => {
             )
 
             setSchedule(restoredSchedule);
+            setIsLoading(false);
         } else {
             // initialize empty schedule
             const initialSchedule: Days = 
@@ -42,6 +44,7 @@ export const useSckedule = () => {
         }
 
         setCurrentDay(getToday());
+        setIsLoading(false);
     }, []);
 
     // update a specific prayer in the status
@@ -65,10 +68,11 @@ export const useSckedule = () => {
 
     return {
         schedule,
+        isLoading,
         currentDay,
         setCurrentDay,
         togglePrayer,
-        toggleShefa
+        toggleShefa,
     };
 };
 

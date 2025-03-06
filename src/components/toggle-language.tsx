@@ -17,10 +17,10 @@ const ToggleLanguage = ({className}: ToggleLanguageProps) => {
     }
 
     return (
-        <label htmlFor="toggle-language" className={className}>
+        <label htmlFor="toggle-language" className={className} title={translations[language].toggleLanguage}>
             <select 
                 name="toggle-language" id="toggle-language" 
-                className="cursor-pointer bg-[var(--border)] border-none focus:ring-0 outline-none text-sm font-semibold text-[var(--foreground)]" 
+                className="py-0.5 px-1 cursor-pointer bg-[var(--border)] border-none focus:ring-0 outline-none text-sm font-semibold text-[var(--foreground)] rounded-full" 
                 defaultValue={language} 
                 onChange={(e) => toggleLanguage(e.target.value as Language)}
             >

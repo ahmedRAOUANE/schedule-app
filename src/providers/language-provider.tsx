@@ -28,8 +28,6 @@ const LanguageProvider = ({children}: {children: React.ReactNode}) => {
     const language = selectedLanguage as Language;
     
     const toggleLanguage = (selectedLanguage: Language = defaultLanguage) => {
-        // const newPath = pathname.replace(`/${language}`, `/${selectedLanguage}`)
-        // router.push(newPath);
         if (selectedLanguage !== language) {
             segments[1] = selectedLanguage;
             const newPath = segments.join("/");
@@ -37,11 +35,29 @@ const LanguageProvider = ({children}: {children: React.ReactNode}) => {
         }
     }
 
-    return <LanguageContext.Provider value={{toggleLanguage, language}}>
-        <html dir={language === Language.ARABIC ? "rtl" : "ltr"} lang={language}>
-            {children}
-        </html>
-    </LanguageContext.Provider>
+    return (
+        <LanguageContext.Provider value={{ toggleLanguage, language }}>
+            <html dir={language === Language.ARABIC ? "rtl" : "ltr"} lang={language}>
+                <head>
+                    {/* this script is to prevent the theme flickering */}
+                    <script dangerouslySetInnerHTML={{
+                        __html: `
+                        (function() {
+                            if (typeof window === "undefined") return;
+
+                            let storedTheme = localStorage.getItem("theme");
+                            let isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+                            let theme = storedTheme || (isLightMode ? "light" : "dark");
+                            document.documentElement.setAttribute("data-theme", theme);
+                        })();
+                    `
+                    }} />
+                </head>
+
+                {children}
+            </html>
+        </LanguageContext.Provider>
+    )
 }
 
 export const useLanguage = () => {

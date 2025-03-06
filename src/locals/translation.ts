@@ -4,7 +4,8 @@ export const translations = {
         welcome: "Welcome to the App",
         schedule: "Daily Schedule",
         prayer: "Prayer Times",
-        toggleLanguage: "Switch to Arabic",
+        toggleLanguage: "Switch Language",
+        toggleTheme: "Switch Theme",
         mainTitle: "Schedule",
         day: "Day",
         prayers: ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"],
@@ -19,7 +20,7 @@ export const translations = {
         welcome: "مرحبا بك في التطبيق",
         schedule: "جدول اليوم",
         prayer: "وقت الصلاة",
-        toggleLanguage: "تغيير اللغة إلى العربية",
+        toggleLanguage: "تغيير اللغة",
         mainTitle: "جدولك",
         day: "يوم",
         prayers: ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"],
@@ -27,6 +28,7 @@ export const translations = {
         appLanguage: {
             en: "الانجلزية",
             ar: "العربية"
-        }
+        },
+        toggleTheme: "تغيير الثيم"
     }
 }

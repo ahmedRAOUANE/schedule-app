@@ -9,7 +9,7 @@ const Days = ({lang}: {lang: Language}) => {
     const { currentDay } = useSckedule();
 
     return (
-        <div className="space-y-4">
+        <div className="flex flex-col md:flex-row gap-4 flex-wrap mt-10">
             {Array.from({ length: TOTAL_DAYS }, (_, i) => (
                 <DayTracker lang={lang} key={i + 1} day={i + 1} isActive={i + 1 === currentDay} />
             ))}
@@ -18,3 +18,4 @@ const Days = ({lang}: {lang: Language}) => {
 }
 
 export default Days
+
