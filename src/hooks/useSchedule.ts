@@ -74,11 +74,24 @@ export const useSckedule = () => {
         if (!currentDay) return;
 
         const allChecked = currentDay.tasks.prayers.every((prayer) => prayer) && currentDay.tasks.shefa;
-        console.log("5. allChecked: ", allChecked);
+        // console.log("5. allChecked: ", allChecked);
 
-        const updatedDay = allChecked
-            ? currentDay.uncheckAll()
-            : currentDay.checkAll();
+        if (allChecked) {
+            const updatedDay = currentDay.uncheckAll();
+            const updatedSchedule = {
+                ...schedule,
+                [`${selectedDay}`]: updatedDay
+            };
+            setSchedule(updatedSchedule);
+            localStorage.setItem("schedule", JSON.stringify(updatedSchedule));
+            return;
+        }
+
+        const updatedTasks = {
+            prayers: currentDay.tasks.prayers.map(() => true),
+            shefa: true
+        };
+        const updatedDay = new Day(updatedTasks);
 
         const updatedSchedule = {
             ...schedule,
