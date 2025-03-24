@@ -1,7 +1,7 @@
 "use client";
 
 import { defaultLanguage } from "@/utils/constants";
-import { Language } from "@/utils/types";
+import { Language } from "@/utils/types/day";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext } from "react";
 interface LanguageContextType {

@@ -2,7 +2,7 @@
 
 import { translations } from "@/locals/translation";
 import { useLanguage } from "@/providers/language-provider";
-import { Language } from "@/utils/types"
+import { Language } from "@/utils/types/day"
 
 interface ToggleLanguageProps {
     className?: string

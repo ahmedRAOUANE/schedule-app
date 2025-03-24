@@ -40,5 +40,23 @@ export class Day {
         const updatedtasks = {...this.tasks, shefa: !this.tasks.shefa};
         return new Day(updatedtasks);
     }
+
+    checkAll() {
+        const updatedtasks = { 
+            ...this.tasks, 
+            prayers: this.tasks.prayers.map(() => true), 
+            shefa: true 
+        };
+        return new Day(updatedtasks);
+    }
+
+    uncheckAll() {
+        const updatedtasks = { 
+            ...this.tasks, 
+            prayers: this.tasks.prayers.map(() => false), 
+            shefa: false 
+        };
+        return new Day(updatedtasks);
+    }
 }
 

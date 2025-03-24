@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Language } from "@/utils/types";
+import { Language } from "@/utils/types/day";
 import { defaultLanguage } from "./utils/constants";
 
 // Define supported languages

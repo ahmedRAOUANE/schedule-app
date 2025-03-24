@@ -1,7 +1,7 @@
 "use client";
 
 import { translations } from "@/locals/translation";
-import { Language } from "@/utils/types";
+import { Language } from "@/utils/types/day";
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | null;
