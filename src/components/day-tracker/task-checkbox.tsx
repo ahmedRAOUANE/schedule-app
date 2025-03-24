@@ -1,4 +1,3 @@
-import { Span } from 'next/dist/trace'
 import React from 'react'
 
 const TaskCheckbox = ({checked, onChange, textStyle, checkboxStyle, taskName, children}: {

@@ -1,11 +1,7 @@
 "use client";
 
-import { useSckedule } from '@/hooks/useSchedule';
 import { Language } from '@/utils/types/day';
-import { translations } from '@/locals/translation';
 import { TOTAL_DAYS } from '@/utils/constants';
-import { FaAngleRight, FaCheck } from 'react-icons/fa';
-import { useState } from 'react';
 import Day from './day';
 
 interface DayTrackerProps {
