@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Language } from "@/utils/types";
 import { defaultLanguage } from "./utils/constants";
+import { Language } from "./utils/types/language";
 
 // Define supported languages
 const SUPPORTED_LANGUAGES = Object.values(Language); // ['en', 'ar']

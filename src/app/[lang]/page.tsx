@@ -1,29 +1,66 @@
-import Days from "@/components/days";
-import ToggleLanguage from "@/components/toggle-language";
-import ToggleThemeBtn from "@/components/toggle-theme-btn";
-import { translations } from "@/locals/translation";
-import { Language } from "@/utils/types";
+import { loadTranslation } from "@/utils/load-transloation";
+import { Language } from "@/utils/types/language";
+import Link from "next/link";
+import { FaCalendarAlt, FaClock, FaCog } from "react-icons/fa";
 
-export default async function Home({params}: {params: Promise<{lang: Language}>}) {
-  const {lang} = await params;
+export default async function Home({ params }: { params: Promise<{ lang: Language }> }) {
+  const { lang } = await params;
+  const t = await loadTranslation(lang);
 
   return (
-    <main className="p-6 mx-auto container md:max-w-6xl">
-      <header className="fixed top-0 left-0 right-0 px-6 py-2 z-100 backdrop-blur bg-[var(--border)]/40 shadow-lg">
-        <div className="flex items-center justify-between max-w-6xl mx-auto">
-          <h1 className="text-2xl font-bold text-center">
-            {translations[lang]?.mainTitle}
-          </h1>
+    <div className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">{t.welcome}</h1>
+        <p className="text-lg text-[var(--foreground)]/80">
+          {t.schedule} - {t.prayer}
+        </p>
+      </div>
 
-          <div className="flex items-center gap-3">
-            <ToggleThemeBtn language={lang} className="px-2 rounded-full bg-[var(--border)] flex items-center justify-center cursor-pointer" />
-            <ToggleLanguage className="px-2 rounded-full bg-[var(--border)] flex items-center justify-center cursor-pointer" />
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {/* Schedule Card */}
+        <Link
+          href={`/${lang}/schedule`}
+          className="group p-6 rounded-2xl bg-[var(--border)] hover:bg-[var(--border)]/80 transition-all"
+        >
+          <div className="flex flex-col items-center text-center">
+            <FaCalendarAlt className="text-3xl mb-4 text-[var(--foreground)] group-hover:scale-110 transition-transform" />
+            <h2 className="text-xl font-semibold mb-2">{t.navbarLinks.schedule}</h2>
+            <p className="text-[var(--foreground)]/70">
+              {t.schedule}
+            </p>
           </div>
-        </div>
-      </header>
+        </Link>
 
-      <Days lang={lang} />
-    </main>
+        {/* Prayers Card */}
+        <Link
+          href={`/${lang}/prayers`}
+          className="group p-6 rounded-2xl bg-[var(--border)] hover:bg-[var(--border)]/80 transition-all"
+        >
+          <div className="flex flex-col items-center text-center">
+            <FaClock className="text-3xl mb-4 text-[var(--foreground)] group-hover:scale-110 transition-transform" />
+            <h2 className="text-xl font-semibold mb-2">{t.navbarLinks.prayers}</h2>
+            <p className="text-[var(--foreground)]/70">
+              {t.prayer}
+            </p>
+          </div>
+        </Link>
+
+        {/* Settings Card */}
+        <Link
+          href={`/${lang}/settings`}
+          className="group p-6 rounded-2xl bg-[var(--border)] hover:bg-[var(--border)]/80 transition-all"
+        >
+          <div className="flex flex-col items-center text-center">
+            <FaCog className="text-3xl mb-4 text-[var(--foreground)] group-hover:scale-110 transition-transform" />
+            <h2 className="text-xl font-semibold mb-2">{t.navbarLinks.settings}</h2>
+            <p className="text-[var(--foreground)]/70">
+              {t.toggleTheme} & {t.toggleLanguage}
+            </p>
+          </div>
+        </Link>
+      </div>
+    </div>
   );
 }
-
