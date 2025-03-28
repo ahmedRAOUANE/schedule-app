@@ -11,10 +11,10 @@ const Layout = async ({ children, params }: { children: React.ReactNode, params:
     return (
         <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
             <body>
-                <div className='min-h-screen'>
+                <div className='min-h-screen py-16 px-2'>
                     <Header lang={lang} translation={translation} />
 
-                    <main className="p-6 pt-16 mx-auto container md:max-w-6xl">
+                    <main className="mx-auto container md:max-w-6xl">
                         {children}
                     </main>
 

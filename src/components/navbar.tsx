@@ -43,10 +43,17 @@ const Navbar = ({
 
   return (
     <div className='fixed bottom-3 left-1/2 -translate-x-1/2 w-fit bg-[var(--border)]/80 backdrop-blur rounded-3xl py-2 px-4 shadow-2xl border-[var(--border)]'>
-      <ul className='flex items-center justify-between gap-4'>
+      <ul className='flex items-center justify-evenly gap-4'>
         {navbarLinks.map((link) => (
-          <li key={link.href} className={`${link.href === currentPath() ? 'bg-[var(--foreground)] text-[var(--background)]' : ''} rounded-full px-2 py-1`}>
-            <Link href={link.href}>{translations?.navbarLinks[link.label.toLowerCase() as keyof typeof translations.navbarLinks]}</Link>
+          <li
+            key={link.href}
+            className={`${link.href === currentPath() ? 'bg-[var(--foreground)] text-[var(--background)]' : ''} rounded-full px-2 py-1`}
+          >
+            <Link
+              href={`/${lang}${link.href === "/" ? "" : link.href}`}
+            >
+              {translations?.navbarLinks[link.label.toLowerCase() as keyof typeof translations.navbarLinks]}
+            </Link>
           </li>
         ))}
       </ul>
