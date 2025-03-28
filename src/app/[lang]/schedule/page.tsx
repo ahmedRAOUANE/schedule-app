@@ -8,7 +8,7 @@ export default async function SchedulePage({ params }: { params: Promise<{ lang:
     const { lang } = await params;
     const t = await loadTranslation(lang);
 
-    if (isFeatureEnabled("schedule-page")) {
+    if (!isFeatureEnabled("schedule-page")) {
         return <CommingSoon t={t} />;
     }
 

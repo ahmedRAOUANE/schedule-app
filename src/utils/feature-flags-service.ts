@@ -7,5 +7,5 @@ const experimentalFeatures = [
     }
 ];
 
-export const isFeatureEnabled = (feature: string) =>
+export const isFeatureEnabled = (feature: string) => 
     experimentalFeatures.find((f) => f.name === feature)?.enabled;
