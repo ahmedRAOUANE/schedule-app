@@ -1,0 +1,26 @@
+{
+    "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "welcome": "Welcome to the App",
+    "schedule": "Daily Schedule",
+    "prayer": "Prayer Times",
+    "toggleLanguage": "Switch Language",
+    "toggleTheme": "Switch Theme",
+    "mainTitle": "Schedule",
+    "day": "Day",
+    "prayers": ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"],
+    "shefa": "Shefa",
+    "appLanguage": {
+        "en": "English",
+        "ar": "Arabic"
+    },
+    "navbarLinks": {
+        "home": "Home",
+        "prayers": "Prayers",
+        "schedule": "Schedule",
+        "settings": "Settings"
+    },
+    "comingSoon": {
+        "title": "Coming Soon",
+        "description": "We're working hard to bring you a better way to manage your daily schedule. Stay tuned for updates!"
+    }
+}

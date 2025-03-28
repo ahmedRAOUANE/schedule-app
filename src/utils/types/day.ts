@@ -1,9 +1,3 @@
-export enum Language {
-    ARABIC = "ar",
-    ENGLISH = "en",
-    // TODO: Might add more languages later
-}
-
 interface Tasks {
     prayers: boolean[];
     shefa: boolean;

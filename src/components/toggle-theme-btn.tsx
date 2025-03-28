@@ -1,12 +1,11 @@
 "use client";
 
-import { translations } from "@/locals/translation";
-import { Language } from "@/utils/types/day";
+import { Translation } from "@/utils/types/language";
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | null;
 
-const ToggleThemeBtn = ({ className, language }: { className?: string, language: Language }) => {
+const ToggleThemeBtn = ({ className, translations }: { className?: string, translations: Translation }) => {
     const [theme, setTheme] = useState<Theme>(null);
 
     useEffect(() => {
@@ -34,7 +33,7 @@ const ToggleThemeBtn = ({ className, language }: { className?: string, language:
 
     return (
         <button
-            title={translations[language].toggleTheme}
+            title={translations.toggleTheme}
             onClick={handleChangeTheme}
             className={`btn btn-secondary btn-sm ${className}`}
         >

@@ -54,7 +54,7 @@ export const useSckedule = () => {
             ...schedule,
             [`${day}`]: schedule[day].togglePrayer(prayer)
         };
-        setSchedule(updatedSchedule);
+        setSchedule({...updatedSchedule});
         localStorage.setItem("schedule", JSON.stringify(updatedSchedule));
     }
 
@@ -64,7 +64,7 @@ export const useSckedule = () => {
             ...schedule,
             [`${day}`]: schedule[day].toggleShefa()
         };
-        setSchedule(updatedSchedule);
+        setSchedule({...updatedSchedule});
         localStorage.setItem("schedule", JSON.stringify(updatedSchedule));
     }
 
@@ -74,7 +74,6 @@ export const useSckedule = () => {
         if (!currentDay) return;
 
         const allChecked = currentDay.tasks.prayers.every((prayer) => prayer) && currentDay.tasks.shefa;
-        // console.log("5. allChecked: ", allChecked);
 
         if (allChecked) {
             const updatedDay = currentDay.uncheckAll();
@@ -82,7 +81,7 @@ export const useSckedule = () => {
                 ...schedule,
                 [`${selectedDay}`]: updatedDay
             };
-            setSchedule(updatedSchedule);
+            setSchedule({...updatedSchedule});
             localStorage.setItem("schedule", JSON.stringify(updatedSchedule));
             return;
         }
